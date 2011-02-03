@@ -14,6 +14,15 @@ screenrect = screen.get_rect ()
 # going to jump to the Rolls Royce version: the LayeredDirty
 # group holding DirtySprites.
 #
+# DirtySprites have an attribute -- .dirty -- which is set or
+# reset to indicate whether they need to be redrawn.
+#
+# The LayeredDirty group takes account of this setting, and also
+# allows for sprites to be drawn in specific layers, so that
+# the background is drawn before the foreground and the foreground
+# before the characters. That way, the hero walks in front of a
+# tree and not behind it -- assuming that's what you want!
+#
 
 class Hero (pygame.sprite.DirtySprite):
   def __init__ (self, initial_position=(300, 200)):
